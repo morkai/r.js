@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * @license r.js 2.3.6 Wed, 03 Mar 2021 13:08:56 GMT Copyright jQuery Foundation and other contributors.
  * Released under MIT license, http://github.com/requirejs/r.js/LICENSE

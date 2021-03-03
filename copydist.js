@@ -4,6 +4,8 @@ var fs = require('fs'),
     stamp = (new Date()).toUTCString(),
     exec = require('child_process').exec,
     distFileName = 'dist/r.js',
+    binFileName = 'bin/r.js',
+    binHashBang = '#!/usr/bin/env node',
     count = 0,
     contents;
 
@@ -28,6 +30,8 @@ exec('node dist.js',
             );
 
             fs.writeFileSync(distFileName, contents, 'utf8');
+            
+            fs.writeFileSync(binFileName, binHashBang + "\n" + contents, 'utf8')
         }
     }
 );
