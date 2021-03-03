@@ -1,5 +1,20 @@
 {
-    "volo": {
-        "url": "https://raw.github.com/requirejs/r.js/{version}/dist/r.js"
-    }
+  "name": "requirejs",
+  "description": "Node adapter for RequireJS, for loading AMD modules. Includes RequireJS optimizer",
+  "version": "2.3.6",
+  "homepage": "http://github.com/jrburke/r.js",
+  "author": "James Burke <jrburke@gmail.com> (http://github.com/jrburke)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrburke/r.js.git"
+  },
+  "main": "./dist/r.js",
+  "bin": {
+    "r.js": "./dist/r.js",
+    "r_js": "./dist/r.js"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  }
 }
