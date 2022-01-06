@@ -488,6 +488,12 @@ define(function (require) {
                 //of those modules end up being one of the excluded values.
                 actions = modules.map(function (module) {
                     return function () {
+                        if (module.exclusionBuilder) {
+                            if (!module.exclude) {
+                                module.exclude = [];
+                            }
+                            module.exclusionBuilder(module);
+                        }
                         if (module.exclude) {
                             module.excludeLayers = [];
                             return prim.serial(module.exclude.map(function (exclude, i) {
