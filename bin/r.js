@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @license r.js 2.3.6 Wed, 03 Mar 2021 13:08:56 GMT Copyright jQuery Foundation and other contributors.
+ * @license r.js 2.3.6 Thu, 06 Jan 2022 21:07:57 GMT Copyright jQuery Foundation and other contributors.
  * Released under MIT license, http://github.com/requirejs/r.js/LICENSE
  */
 
@@ -20,7 +20,7 @@ var requirejs, require, define, xpcUtil;
 (function (console, args, readFileFunc) {
     var fileName, env, fs, vm, path, exec, rhinoContext, dir, nodeRequire,
         nodeDefine, exists, reqMain, loadedOptimizedLib, existsForNode, Cc, Ci,
-        version = '2.3.6 Wed, 03 Mar 2021 13:08:56 GMT',
+        version = '2.3.6 Thu, 06 Jan 2022 21:07:57 GMT',
         jsSuffixRegExp = /\.js$/,
         commandOption = '',
         useLibLoaded = {},
@@ -28782,6 +28782,12 @@ define('build', function (require) {
                 //of those modules end up being one of the excluded values.
                 actions = modules.map(function (module) {
                     return function () {
+                        if (module.exclusionBuilder) {
+                            if (!module.exclude) {
+                                module.exclude = [];
+                            }
+                            module.exclusionBuilder(module);
+                        }
                         if (module.exclude) {
                             module.excludeLayers = [];
                             return prim.serial(module.exclude.map(function (exclude, i) {
